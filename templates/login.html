@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}CHATGPT | Login {% endblock %}
+
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="container">
+        {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+        </div>
+    {% endif %}
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" required>
+  
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required>
+  
+      <button type="submit" class="bg-success">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+  
+    <div class="container pb-1" style="background-color:#f1f1f1">
+      <!-- <button type="button" class="cancelbtn bg-success">Cancel</button> -->
+      <p class="text-center">Don't have an account <a href="{% url 'register' %}">Sign Up</a></p>
+    </div>
+
+  </form>
+
+{% endblock %}

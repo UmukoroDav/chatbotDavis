@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+  {% block title %} CHATGPT | Register {% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="container">
+      <h1>Register</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+        {% if error_message %}
+            <div class="alert alert-danger" role="alert">
+                {{ error_message }}
+            </div>
+        {% endif %}
+      <label for="name"><b>Name</b></label>
+      <input type="text" placeholder="Enter Name" name="name" id="name" required>
+
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" id="username" required>
+  
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" id="email" required>
+  
+      <label for="password1"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password1" id="password1" required>
+  
+      <label for="password2"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="password2" id="password2" required>
+      <hr>
+      <button type="submit" class="registerbtn bg-success">Register</button>
+    </div>
+  
+    <div class="container signin">
+      <p>Already have an account? <a href="{% url 'login' %}">Sign in</a>.</p>
+    </div>
+  </form>
+
+{% endblock %}
