@@ -28,8 +28,7 @@ def appchatbox(request):
     
     if request.method == 'POST':
         message = request.POST.get('message')
-        # response = ask_openai(message)
-        response = 'Hw are u doing'
+        response = ask_openai(message)
         
         chat = Chatb(user=request.user, message=message, response=response, created_at=timezone.now())
         chat.save()
